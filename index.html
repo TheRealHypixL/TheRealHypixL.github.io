@@ -1,1 +1,108 @@
-<p> Hi </p>
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HypixL Landing Page</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #main {
+      width: 40%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      height: 17%;
+      background-color: rgba(0,0,0, 0.1);
+      margin: 5%;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      user-select: none;
+
+      transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+      box-shadow: rgba(255,255,255,0.05) 0 0 30px;
+      transform: scale(100%);
+    }
+    .panel:not(.no_hover):hover {
+      box-shadow: rgba(255,255,255,0.1) 0 0 40px;
+      transform: scale(105%);
+    }
+    .panel > p:not(.desc) {
+      color: white;
+      font-size: 32px;
+      font-family: "Tektur", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      margin: 0;
+    }
+    .panel > .desc {
+      color: #555555;
+      font-size: 16px;
+      font-family: "Tektur", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      margin: 0;
+    }
+  </style>
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div id="logodiv">
+    <img src="img/logo.png" id="logo" width="500" alt="HypixL" onclick="onClickOnLogo()"/>
+  </div>
+
+  <div class="invisible" id="main">
+    <div class="panel">
+      <p style="color: #00dc79">Prison</p>
+      <p class="desc">everything Lifeboat prison</p>
+    </div>
+    <div class="panel no_hover">
+      <p style="color: dimgray">under construction</p>
+    </div>
+    <div class="panel no_hover">
+      <p style="color: dimgray">under construction</p>
+    </div>
+  </div>
+</body>
+
+<script>
+  function onClickOnLogo() {
+    const div = document.getElementById('logodiv');
+    const newItem = document.getElementById('main');
+    div.classList.add('fadeOutFull');
+    setTimeout(() => {
+      div.remove();
+      newItem.className = "fadeInFull";
+    }, 350);
+  }
+</script>
+
+</html>
