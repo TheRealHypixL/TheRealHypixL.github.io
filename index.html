@@ -81,7 +81,7 @@
   </div>
 
   <div class="invisible" id="main">
-    <div class="panel">
+    <div class="panel" onclick="gotoPrison()">
       <p style="color: #00dc79">Prison</p>
       <p class="desc">everything Lifeboat prison</p>
     </div>
@@ -103,6 +103,9 @@
       div.remove();
       newItem.className = "fadeInFull";
     }, 350);
+  }
+  function gotoPrison() {
+    window.location.assign("/prison");
   }
 </script>
 
