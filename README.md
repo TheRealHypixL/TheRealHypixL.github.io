@@ -1,2 +1,2 @@
 # PS Rares
-my epic repo
+my epic repo - now on locxL
