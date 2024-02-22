@@ -1,2 +1,2 @@
 # PS Rares
-MY WEB ITE
+MY WEB ITE (v 1.02
