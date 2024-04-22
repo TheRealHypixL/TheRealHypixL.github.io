@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prison Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            background-color: #222222;
+        }
+        div.field {
+            height: 48px;
+            display: flex;
+            align-items: center; /* optional: aligns items vertically */
+            justify-content: left; /* optional: evenly distributes items */
+        }
+        input {
+            margin-left: 10px;
+        }
+        hr {
+            margin: 48px;
+        }
+
+        h1 {
+            font-size: 68px;
+            margin: 48px 1px 1px;
+            color: white;
+        }
+        h2 {
+            font-size: 32px;
+            margin: 0;
+            color: #777777;
+        }
+        p {
+            color: #d9d6d4;
+            margin-right: 0;
+        }
+        p, input {
+            font-size: 24px;
+        }
+        h1, h2, p {
+            margin-left: 48px;
+            font-family: 'Tektur', sans-serif;
+        }
+        input {
+            margin-left: 24px;
+            font-family: 'Tektur', sans-serif;
+        }
+        .logo {
+            color: #ea912a;
+            text-shadow: 0px 0px 10px #e88f2a;
+        }
+
+    </style>
+</head>
+<body>
+    <h1><span class="logo">HypixL's</span> Prison Calculator</h1>
+    <h2 id="round">Rounds to the nearest hundredth.</h2>
+    <hr />
+</body>
+
+
+<script>
+    const accuracy = 100;
+    const obsidian_price = 80;
+    const rainbow_lucky_block_price = obsidian_price * 10;
+    const conversions = {
+        gold: {
+            display: "Gold",
+            worthInGold: 1
+        },
+        p3_set: {
+            display: "Prot 3 Sets (p3u2 + ff2 boots)",
+            worthInGold: 232360
+        },
+        god_set: {
+            display: "God Sets",
+            worthInGold: 284560
+        },
+        s4: {
+            display: "Sharp 4 Swords",
+            worthInGold: 57500
+        },
+        ender_pearl: {
+            display: "Ender Pearls",
+            worthInGold: 14250
+        },
+        snowball: {
+            display: "Snowballs",
+            worthInGold: 114000
+        },
+        obsidian: {
+            display: "Obsidian",
+            worthInGold: obsidian_price
+        },
+        stack_obsidian: {
+            display: "Obsidian Stacks",
+            worthInGold: obsidian_price*64
+        },
+        dub_obsidian: {
+            display: "Dubs of Obsidian",
+            worthInGold: obsidian_price*64*54
+        },
+        rainbow_lucky_block: {
+            display: "Rainbow Lucky Blocks",
+            worthInGold: rainbow_lucky_block_price
+        },
+        stack_rainbow_lucky_block: {
+            display: "Rainbow Lucky Block Stacks",
+            worthInGold: rainbow_lucky_block_price*64
+        },
+        dub_rainbow_lucky_block: {
+            display: "Dubs of Rainbow Lucky Blocks",
+            worthInGold: rainbow_lucky_block_price*64*54
+        },
+    }
+
+    function updateBoxes(goldAmount, ignoreElement) {
+        for(const _conversion in conversions) {
+            const conversion = conversions[_conversion];
+            const worthInGold = conversion.worthInGold;
+            const element = conversion.element;
+
+            if(element === ignoreElement)
+                continue;
+
+            // 1.7877862513
+            element.value = "" + Math.round(goldAmount / worthInGold * accuracy) / accuracy;
+        }
+    }
+    function generatePage() {
+        for(const _conversion in conversions) {
+            const conversion = conversions[_conversion];
+            const displayName = conversion.display;
+            const worthInGold = conversion.worthInGold;
+
+            const textElement = document.createElement("p");
+            const valueElement = document.createElement("input");
+            textElement.textContent = displayName + ": ";
+            valueElement.setAttribute("title", displayName);
+            valueElement.setAttribute("type", "number");
+
+            valueElement.value = worthInGold;
+            const element = document.createElement("div");
+            element.className = "field";
+            element.appendChild(textElement);
+            element.appendChild(valueElement);
+
+            document.body.appendChild(element);
+            conversion.element = valueElement;
+
+            valueElement.oninput = function() {
+                const typedContent = valueElement.value;
+
+                const typedValue = Number.parseFloat(typedContent);
+                if(Number.isNaN(typedValue)) {
+                    console.error("Not a number: " + typedContent);
+                    return;
+                }
+
+                updateBoxes(typedValue * worthInGold, valueElement);
+            }
+        }
+        updateBoxes(1)
+    }
+
+    generatePage();
+</script>
+
+</html>
