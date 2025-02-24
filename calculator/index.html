@@ -9,7 +9,7 @@
             background-color: #222222;
         }
         div.field {
-            height: 48px;
+            height: 36px;
             display: flex;
             align-items: center; /* optional: aligns items vertically */
             justify-content: left; /* optional: evenly distributes items */
@@ -36,7 +36,7 @@
             margin-right: 0;
         }
         p, input {
-            font-size: 24px;
+            font-size: 20px;
         }
         h1, h2, p {
             margin-left: 48px;
@@ -63,6 +63,9 @@
 <script>
     const accuracy = 100;
     const obsidian_price = 80;
+    const ender_pearl_price = 9583;
+    const s4_price = 57500;
+    const snowball_price = 7187;
     const rainbow_lucky_block_price = obsidian_price * 10;
     const conversions = {
         gold: {
@@ -79,15 +82,35 @@
         },
         s4: {
             display: "Sharp 4 Swords",
-            worthInGold: 57500
+            worthInGold: s4_price
+        },
+        s4_dubs: {
+            display: "Dubs of s4s",
+            worthInGold: s4_price*54
         },
         ender_pearl: {
             display: "Ender Pearls",
-            worthInGold: 14250
+            worthInGold: ender_pearl_price
+        },
+        ender_pearl_stack: {
+            display: "Ender Pearl Stacks",
+            worthInGold: ender_pearl_price*16
+        },
+        ender_pearl_dubs: {
+            display: "Dubs of Ender Pearls",
+            worthInGold: ender_pearl_price*16*54
         },
         snowball: {
             display: "Snowballs",
-            worthInGold: 114000
+            worthInGold: snowball_price
+        },
+        snowball_stack: {
+            display: "Snowball Stacks",
+            worthInGold: snowball_price*16
+        },
+        snowball_dubs: {
+            display: "Dubs of Snowballs",
+            worthInGold: snowball_price*16*54
         },
         obsidian: {
             display: "Obsidian",
